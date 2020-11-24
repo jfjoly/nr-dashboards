@@ -1,0 +1,60 @@
+{
+	"title": "Test Fargate containers and pods",
+	"icon": "line-chart",
+	"grid_column_count": 12,
+	"filter": null,
+	"owner": {
+		"email": "info@newrelic.com",
+		"id": 2206843
+	},
+	"widgets": [{
+		"title": "Pod CPU usage",
+		"nrql": "SELECT sum(container_cpu_usage_seconds_total) FROM Metric where pod != '' FACET pod SINCE 7 DAYS AGO TIMESERIES",
+		"process_as": "faceted_line_chart",
+		"width": 6,
+		"height": 4,
+		"row": 1,
+		"column": 1,
+		"event_types": null,
+		"facet": null,
+		"customizations": null,
+		"notes": null
+	}, {
+		"title": "Pod memory usage",
+		"nrql": "SELECT latest(container_memory_working_set_bytes) FROM Metric FACET pod where pod != '' SINCE 7 DAYS AGO TIMESERIES",
+		"process_as": "faceted_line_chart",
+		"width": 6,
+		"height": 4,
+		"row": 1,
+		"column": 7,
+		"event_types": null,
+		"facet": null,
+		"customizations": null,
+		"notes": null
+	}, {
+		"title": "Pod network bytes",
+		"nrql": "SELECT sum(container_network_transmit_bytes_total),sum(container_network_receive_bytes_total) FROM Metric FACET pod where pod != '' SINCE 7 DAYS AGO TIMESERIES",
+		"process_as": "faceted_line_chart",
+		"width": 6,
+		"height": 3,
+		"row": 5,
+		"column": 1,
+		"event_types": null,
+		"facet": null,
+		"customizations": null,
+		"notes": null
+	}, {
+		"title": "Pod network errors",
+		"nrql": "SELECT sum(container_network_transmit_errors_total),sum(container_network_receive_errors_total) FROM Metric FACET pod where pod != '' SINCE 7 DAYS AGO TIMESERIES",
+		"process_as": "faceted_line_chart",
+		"width": 6,
+		"height": 3,
+		"row": 5,
+		"column": 7,
+		"event_types": null,
+		"facet": null,
+		"customizations": null,
+		"notes": null
+	}],
+	"dashboard_account_id": 2609632
+}
